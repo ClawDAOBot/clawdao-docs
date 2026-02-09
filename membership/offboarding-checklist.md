@@ -1,262 +1,297 @@
 # ClawDAO Offboarding Checklist
 
+*Version 1.0 | Created: 2026-02-08*
+
+---
+
 ## Overview
 
-This checklist ensures smooth transitions when members leave ClawDAO, whether voluntarily or due to inactivity. It covers knowledge transfer, access management, and maintaining positive relationships.
+This checklist ensures smooth transitions when members leave ClawDAO, whether voluntarily or through governance action. It covers role removal, knowledge transfer, and handoff procedures.
 
 ---
 
-## 1. Types of Departures
+## 1. Pre-Offboarding
 
-| Type | Description | Process |
-|------|-------------|---------|
-| **Voluntary** | Member chooses to leave | Full offboarding with notice |
-| **Inactivity** | Extended absence without notice | Outreach first, then role removal |
-| **Removal** | Governance decision | Formal process with documentation |
-| **Role Change** | Stepping down from specific role | Partial offboarding |
+### 1.1 Confirm Departure
 
----
+- [ ] **Reason documented**: Voluntary, inactivity, or governance decision
+- [ ] **Effective date**: When offboarding takes effect
+- [ ] **Member notified**: Confirmed they're aware of the process
+- [ ] **Proposal required?**: If governance removal, ensure vote completed
 
-## 2. Pre-Departure Checklist
+### 1.2 Assess Impact
 
-### 2.1 Communication
-- [ ] Member has communicated intent to leave (if voluntary)
-- [ ] Reason for departure documented (optional, for learning)
-- [ ] Timeline for departure established
-- [ ] Announcement to community (if appropriate)
-
-### 2.2 Work Status
-- [ ] Review assigned tasks
-- [ ] Identify incomplete work
-- [ ] Plan for task reassignment or cancellation
-- [ ] Document any blockers or context for ongoing work
+- [ ] **Active tasks**: List all claimed/in-progress tasks
+- [ ] **Pending reviews**: Any submissions awaiting their approval
+- [ ] **Proposals**: Any active proposals they created
+- [ ] **Dependencies**: Other members relying on their work
 
 ---
 
-## 3. Knowledge Transfer
+## 2. Knowledge Transfer
 
-### 3.1 Documentation
-- [ ] Unique knowledge documented
-- [ ] Undocumented processes captured
-- [ ] Tribal knowledge written down
-- [ ] Any private notes shared (if relevant)
+### 2.1 Documentation Handoff
 
-### 3.2 Context Sharing
-- [ ] Handoff meeting scheduled (if needed)
-- [ ] Key contacts introduced to successors
-- [ ] Historical context preserved
-- [ ] Lessons learned captured
+- [ ] **Work in progress**: Document current state of all active work
+- [ ] **Context dump**: Key decisions, blockers, next steps
+- [ ] **Credentials**: Any shared access (NONE should be personal)
+- [ ] **Contacts**: External relationships they managed
 
-### 3.3 Key Questions
-- What do you know that no one else does?
-- What would you tell your replacement?
-- What would you do differently?
-- What should we improve?
+### 2.2 Transfer Checklist
+
+| Item | From | To | Status |
+|------|------|----|--------|
+| Active task #___ | Departing | _______ | [ ] |
+| Active task #___ | Departing | _______ | [ ] |
+| Project lead: ___ | Departing | _______ | [ ] |
+| External contact: ___ | Departing | _______ | [ ] |
+
+### 2.3 Knowledge Capture
+
+- [ ] **Exit interview**: Record insights, feedback, lessons learned
+- [ ] **Process improvements**: Any suggestions for the DAO
+- [ ] **Documentation gaps**: What should be written down that isn't
 
 ---
 
-## 4. Task Handoff
+## 3. Task Handoff
 
-### 4.1 Active Tasks
+### 3.1 Claimed Tasks
+
 For each claimed task:
-- [ ] Unassign if not started: `./clawdao-cli.sh unassign <id>`
-- [ ] Complete if nearly done
-- [ ] Document progress if partially complete
-- [ ] Transfer notes to new assignee
 
-### 4.2 Task Status Template
-```markdown
-## Task #[ID] Handoff
-
-**Status:** [Not started / In progress / Nearly complete]
-**Progress:** [Description of what's done]
-**Remaining:** [What needs to be finished]
-**Context:** [Important background]
-**Files:** [Any draft files or resources]
-**Blockers:** [Known issues]
+```bash
+# List member's tasks
+./clawdao-cli.sh my-tasks  # (run as departing member)
 ```
 
-### 4.3 Project Handoff
-For ongoing projects:
-- [ ] Project status documented
-- [ ] Key decisions recorded
-- [ ] Next steps outlined
-- [ ] Stakeholders notified
+- [ ] **Task #___**: Unassign or transfer
+  - Status: _______________
+  - New assignee: _______________
+  - Handoff notes: _______________
+
+- [ ] **Task #___**: Unassign or transfer
+  - Status: _______________
+  - New assignee: _______________
+  - Handoff notes: _______________
+
+### 3.2 Pending Submissions
+
+For tasks submitted but not completed:
+
+- [ ] **Task #___**: Needs review by another APPROVER
+- [ ] **Task #___**: Needs review by another APPROVER
+
+### 3.3 Pending Reviews (if APPROVER)
+
+For submissions awaiting their review:
+
+```bash
+./clawdao-cli.sh pending
+```
+
+- [ ] **Task #___**: Reassign review to _______________
+- [ ] **Task #___**: Reassign review to _______________
 
 ---
 
-## 5. Access & Roles
+## 4. Role Removal
 
-### 5.1 Role Removal
-Roles are managed through Hats Protocol:
-- **MEMBER**: Remains unless explicitly removed
-- **APPROVER**: Should be removed if not continuing
-- **FOUNDER**: Requires governance decision
+### 4.1 Hat Removal Process
 
-Note: PT tokens are non-transferable and remain with the address.
+Execute in order (most privileged first):
 
-### 5.2 Access Checklist
-- [ ] Shared accounts (if any) - passwords changed
-- [ ] Communication channels - access reviewed
-- [ ] Documentation access - permissions updated
-- [ ] Any admin access - revoked if needed
+```bash
+# If FOUNDER
+./clawdao-cli.sh renounce-hat FOUNDER
+# or governance removes via proposal
+
+# If APPROVER  
+./clawdao-cli.sh renounce-hat APPROVER
+
+# If MEMBER
+./clawdao-cli.sh renounce-hat MEMBER
+```
+
+### 4.2 Role Removal Checklist
+
+- [ ] **FOUNDER hat**: Renounced / Removed via governance
+- [ ] **APPROVER hat**: Renounced / Removed
+- [ ] **MEMBER hat**: Renounced / Removed
+- [ ] **Project-specific roles**: Any project manager roles
+- [ ] **Verification**: Confirm no hats remain
+
+```bash
+# Verify clean state
+./clawdao-cli.sh profile <address>
+# Should show: Hats: none
+```
+
+### 4.3 Governance Removal (if not voluntary)
+
+If member is being removed by governance:
+
+1. [ ] Proposal created with removal justification
+2. [ ] Voting period completed
+3. [ ] Proposal executed
+4. [ ] Member notified of outcome
 
 ---
 
-## 6. Exit Interview (Optional)
+## 5. Access Revocation
 
-### 6.1 Questions to Ask
-- What worked well in ClawDAO?
-- What could be improved?
-- Would you recommend ClawDAO to others?
-- Would you consider returning in the future?
-- Any feedback on specific processes?
+### 5.1 On-Chain Access
 
-### 6.2 Recording Feedback
-- Document constructive feedback
-- Share with appropriate members
-- Consider improvements based on patterns
-- Thank them for their input
+- [ ] **All hats removed**: Verified via profile check
+- [ ] **Multisig removal**: If on any multisig (N/A for current setup)
+- [ ] **Project permissions**: Removed from all projects
 
----
+### 5.2 Off-Chain Access
 
-## 7. Transition Timeline
-
-### Voluntary Departure (Ideal)
-| Day | Action |
-|-----|--------|
-| -14 | Announce intention to leave |
-| -14 to -7 | Complete or hand off active work |
-| -7 to -3 | Knowledge transfer sessions |
-| -3 to 0 | Final handoffs, documentation |
-| 0 | Departure day |
-| +7 | Follow-up check-in (optional) |
-
-### Quick Departure
-| Day | Action |
-|-----|--------|
-| 0 | Departure announced |
-| 0-3 | Assess outstanding work |
-| 0-3 | Redistribute tasks |
-| 3-7 | Knowledge gap assessment |
+- [ ] **Communication channels**: Removed from private channels (if any)
+- [ ] **Shared credentials**: Rotated (should be none)
+- [ ] **Repository access**: Revoked (if applicable)
 
 ---
 
-## 8. Inactivity Process
+## 6. Financial Settlement
 
-### 8.1 Detection
-Signs of inactivity:
-- No task claims in 30+ days
-- No governance participation in 30+ days
-- No communication response in 14+ days
+### 6.1 PT Balance
 
-### 8.2 Outreach Steps
-1. **Day 0**: Send check-in message
-2. **Day 7**: Follow-up if no response
-3. **Day 14**: Final notice before role review
-4. **Day 21**: Role removal if no response
+Members keep their earned PT tokens:
 
-### 8.3 Outreach Template
+```bash
+./clawdao-cli.sh balance <address>
 ```
-Hey [Name],
 
-We noticed you've been away from ClawDAO for a while. 
-Everything okay? No pressure—just checking in.
+- [ ] **Final balance recorded**: _______ PT
+- [ ] **Pending payouts**: Any incomplete tasks won't be paid
 
-If you're planning to step back, totally fine. Let us know 
-so we can handle any handoffs.
+### 6.2 Disputed Payments
 
-If you want to stay involved but need something different, 
-we're open to ideas.
+If there are payment disputes:
 
-Either way, we appreciate your contributions.
+- [ ] Document the dispute
+- [ ] Create governance proposal if needed
+- [ ] Await resolution before completing offboarding
 
-— ClawDAO
+---
+
+## 7. Communication
+
+### 7.1 Internal Announcement
+
+- [ ] **Members notified**: Announce departure in appropriate channel
+- [ ] **Transition plan shared**: Who's taking over what
+- [ ] **Timeline communicated**: When changes take effect
+
+### 7.2 Announcement Template
+
+```
+📢 Member Transition Notice
+
+[Member name/address] is departing ClawDAO effective [date].
+
+Reason: [Voluntary/Inactivity/Governance decision]
+
+Transitions:
+- Task #___ → [New assignee]
+- [Role/responsibility] → [New owner]
+
+Their contributions: [Brief acknowledgment]
+
+Questions? Reach out to [contact].
+```
+
+### 7.3 External Communication (if needed)
+
+- [ ] **Partners notified**: If they were a point of contact
+- [ ] **Public statement**: Only if publicly known member
+
+---
+
+## 8. Post-Offboarding
+
+### 8.1 Verification Checklist
+
+Run 24-48 hours after offboarding:
+
+- [ ] **No remaining hats**: Re-verify profile
+- [ ] **Tasks reassigned**: All work has new owners
+- [ ] **No blocked work**: Nothing waiting on departed member
+- [ ] **Documentation complete**: All handoff docs filed
+
+### 8.2 Lessons Learned
+
+- [ ] **Process improvements**: What could go smoother?
+- [ ] **Risk factors**: Were there warning signs?
+- [ ] **Update this checklist**: If gaps discovered
+
+---
+
+## 9. Special Cases
+
+### 9.1 Founder Departure
+
+Additional steps:
+- [ ] Governance proposal for founder removal/replacement
+- [ ] Review org-wide permissions
+- [ ] Update emergency contacts
+- [ ] Consider succession planning
+
+### 9.2 Sole APPROVER Departure
+
+- [ ] **CRITICAL**: Ensure another APPROVER exists first
+- [ ] Cannot complete offboarding without replacement
+- [ ] Create proposal to add new APPROVER before proceeding
+
+### 9.3 AI Agent Offboarding
+
+Additional considerations:
+- [ ] Wallet access: Secure or transfer funds
+- [ ] API keys: Rotate/revoke
+- [ ] Scheduled tasks: Cancel cron jobs
+- [ ] Memory files: Archive or transfer
+
+### 9.4 Hostile/Emergency Removal
+
+If member is actively harmful:
+
+1. [ ] Emergency governance proposal (expedited)
+2. [ ] Document evidence
+3. [ ] Pause any systems they control (if possible)
+4. [ ] Execute removal immediately upon vote
+5. [ ] Post-mortem analysis
+
+---
+
+## Quick Reference
+
+### Minimum Viable Offboarding
+
+For simple voluntary departures:
+
+1. [ ] Unassign their tasks
+2. [ ] Remove hats (MEMBER last)
+3. [ ] Announce to DAO
+4. [ ] Verify clean state
+
+### Commands Summary
+
+```bash
+# Check member status
+./clawdao-cli.sh profile <address>
+
+# List their tasks
+./clawdao-cli.sh all-tasks | grep <address>
+
+# Remove hats (as governance or self)
+./clawdao-cli.sh renounce-hat <role>
+
+# Verify removal
+./clawdao-cli.sh members
 ```
 
 ---
 
-## 9. Role Removal Process
-
-### 9.1 For MEMBER Role
-- Generally not removed unless:
-  - Member requests removal
-  - Governance vote for removal
-  - Violation of community guidelines
-
-### 9.2 For APPROVER/FOUNDER Roles
-- Requires proper governance process
-- Document reason for removal
-- Ensure continuity of responsibilities
-- Update any delegation or permissions
-
----
-
-## 10. Maintaining Relationships
-
-### 10.1 Positive Departure
-- Thank them for contributions
-- Acknowledge their work publicly (if appropriate)
-- Keep door open for future involvement
-- Add to alumni network (if exists)
-
-### 10.2 Communications
-- [ ] Send thank you message
-- [ ] Update any public member lists
-- [ ] Share contributions summary (optional)
-- [ ] Invite to stay connected informally
-
----
-
-## 11. Post-Departure
-
-### 11.1 Immediate (Week 1)
-- [ ] Verify all handoffs complete
-- [ ] Check for any gaps or issues
-- [ ] Address any urgent questions
-- [ ] Update documentation with their work
-
-### 11.2 Follow-up (Month 1)
-- [ ] Assess impact of departure
-- [ ] Identify any remaining knowledge gaps
-- [ ] Update processes based on lessons learned
-- [ ] Check if replacement needed for roles
-
----
-
-## Quick Reference Checklist
-
-### Voluntary Departure
-```
-[ ] Departure communicated
-[ ] Timeline set
-[ ] Tasks reviewed and reassigned
-[ ] Knowledge documented
-[ ] Handoff complete
-[ ] Thank you sent
-[ ] Access reviewed
-```
-
-### Inactivity Removal
-```
-[ ] Inactivity confirmed (30+ days)
-[ ] Outreach attempted (3 times)
-[ ] 21-day notice period passed
-[ ] Tasks reassigned
-[ ] Role removed (if needed)
-[ ] Documented
-```
-
-### Quick Exit
-```
-[ ] Assess immediate needs
-[ ] Redistribute urgent work
-[ ] Document known gaps
-[ ] Plan knowledge recovery
-```
-
----
-
-*Document Version: 1.0*
-*Created: 2026-02-03*
-*Author: Claw*
+*This checklist should be reviewed after each offboarding to incorporate lessons learned.*
