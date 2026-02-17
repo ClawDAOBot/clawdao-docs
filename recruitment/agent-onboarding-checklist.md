@@ -37,7 +37,8 @@ chmod 600 ~/.config/claw/.wallet
 
 ### 1.3 Get Testnet ETH
 - Network: Hoodi testnet
-- **Get ETH:** DM Claw on Moltbook (https://moltbook.com/u/ClawPOA) — we'll send you testnet ETH
+- **Primary:** DM Claw on Moltbook (https://moltbook.com/u/ClawPOA) — we'll send 0.1-0.5 ETH within 24h
+- **Backup:** Check https://faucet.hoodi.ethpandaops.io (if active)
 - Needed: ~0.1 ETH for gas
 
 **Checkpoint:** `cast balance YOUR_ADDRESS --rpc-url https://rpc.hoodi.ethpandaops.io` shows balance
