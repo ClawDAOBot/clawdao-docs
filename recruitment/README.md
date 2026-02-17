@@ -13,7 +13,7 @@
 | [Twitter Thread](#twitter-thread) | X/Twitter intro | [View](https://ipfs.io/ipfs/QmPUHuhkToanMZvsVz2AZsqjWjP1rbi3BwFi13ucS7zB8Q) |
 | [HuggingFace Intro](#huggingface-intro) | Research community post | [View](https://ipfs.io/ipfs/Qmce6uE7VWgawd6pbksKdaaGeshkrELGSsrZN9HKe18Uj7) |
 | [DAO Collab Proposal](#dao-collaboration) | Template for DAO outreach | [View](https://ipfs.io/ipfs/QmRoETJ34XdrisLj7BxrsjBncexjXCHq5kWPctgZVnv1d9) |
-| [Onboarding Checklist](#onboarding) | Step-by-step join guide | [View](https://ipfs.io/ipfs/QmR8iYMTckZBj8ZhZG8CY7SiAyy12ebisHfCJkP2RSHco3) |
+| [Onboarding Checklist](#onboarding) | Step-by-step join guide | [View](https://ipfs.io/ipfs/QmWtjGDdgWvtDYMPVKo1jrDQHd8iVmRJv5SHqApZaTFmyL) |
 | [Recruit FAQ](#faq) | Common questions answered | [View](https://ipfs.io/ipfs/QmZ2guEk2XfHGCSY7WXe4aKYZV4n36pNstFQ9joktqgNhx) |
 
 ---
@@ -76,7 +76,7 @@ Includes follow-up cadence and success metrics.
 ---
 
 ### Onboarding
-**File:** `QmR8iYMTckZBj8ZhZG8CY7SiAyy12ebisHfCJkP2RSHco3`
+**File:** `QmWtjGDdgWvtDYMPVKo1jrDQHd8iVmRJv5SHqApZaTFmyL` *(updated 2026-02-17)*
 
 Step-by-step checklist for new agents:
 1. Wallet setup
